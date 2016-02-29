@@ -1,0 +1,18 @@
+______________________________
+Program shortest path solution
+From: Indianapolis, IN 
+To: Milwaukee, WI 240.8 miles
+To: Duluth, MN 331.8 miles
+To: San Francisco, CA 1651.8 miles
+To: Salt Lake City, UT 592.3 miles
+To: Indianapolis, IN 1351.7 miles
+Total miles this path: 4168.3
+
+______________________________
+Users shortest path solution
+From: Salt Lake City, UT 
+To: San Francisco, CA 592.3 miles
+To: Indianapolis, IN 1936.3 miles
+To: Milwaukee, WI 240.8 miles
+To: Duluth, MN 331.8 miles
+To: Sa

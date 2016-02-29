@@ -1,0 +1,38 @@
+______________________________
+Program shortest path solution
+From: Oklahoma City, OK 
+To: Dallas, TX 184.2 miles
+To: Nashville, TN 614.6 miles
+To: Huntsville, AL 97.5 miles
+To: Columbia, SC 326.5 miles
+To: Charleston, SC 98.5 miles
+To: Concord, MA 812.9 miles
+To: Indianapolis, IN 787.4 miles
+To: Springfield, IL 182.3 miles
+To: Minneapolis, MN 407.5 miles
+To: Lincoln, NE 331.5 miles
+To: Cheyenne, WY 426.2 miles
+To: Butte, MT 507.4 miles
+To: Salt Lake City, UT 361.6 miles
+To: Colorado Springs, CO 399.9 miles
+To: Oklahoma City, OK 463.5 miles
+Total miles this path: 6001.5
+
+______________________________
+Users shortest path solution
+From: Butte, MT 
+To: Minneapolis, MN 931.0 miles
+To: Concord, MA 1104.5 miles
+To: Charleston, SC 812.9 miles
+To: Columbia, SC 98.5 miles
+To: Huntsville, AL 326.5 miles
+To: Nashville, TN 97.5 miles
+To: Indianapolis, IN 257.5 miles
+To: Springfield, IL 182.3 miles
+To: Dallas, TX 625.3 miles
+To: Oklahoma City, OK 184.2 miles
+To: Lincoln, NE 376.5 miles
+To: Colorado Springs, CO 449.3 miles
+To: Cheyenne, WY 156.9 miles
+To: Salt Lake City, UT 369.3 miles
+To: Butte, MT 361.6 miles

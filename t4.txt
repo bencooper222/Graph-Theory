@@ -1,0 +1,19 @@
+______________________________
+Program shortest path solution
+From: Tucson, AZ 
+To: San Diego, CA 363.8 miles
+To: San Francisco, CA 449.4 miles
+To: Buffalo, NY 2289.4 miles
+To: Springfield, IL 599.0 miles
+To: Dallas, TX 625.3 miles
+To: Tucson, AZ 822.0 miles
+Total miles this path: 5148.8
+
+______________________________
+Users shortest path solution
+From: San Francisco, CA 
+To: San Diego, CA 449.4 miles
+To: Tucson, AZ 363.8 miles
+To: Dallas, TX 822.0 miles
+To: Buffalo, NY 1199.9 miles
+To: Sp

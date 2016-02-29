@@ -1,0 +1,35 @@
+______________________________
+Program shortest path solution
+From: Atlanta, GA 
+To: Nashville, TN 212.2 miles
+To: Little Rock, AR 323.1 miles
+To: Dallas, TX 292.5 miles
+To: San Diego, CA 1178.8 miles
+To: Bend, OR 811.0 miles
+To: Portland, OR 118.9 miles
+To: Butte, MT 483.9 miles
+To: Minneapolis, MN 931.0 miles
+To: Des Moines, IA 236.0 miles
+To: Columbus, OH 564.0 miles
+To: Charleston, WV 135.1 miles
+To: Philadelphia, PA 365.7 miles
+To: Columbia, SC 522.4 miles
+To: Savannah, GA 138.9 miles
+To: Atlanta, GA 224.5 miles
+Total miles this path: 6537.9
+
+______________________________
+Users shortest path solution
+From: Portland, OR 
+To: Bend, OR 118.9 miles
+To: San Diego, CA 811.0 miles
+To: Dallas, TX 1178.8 miles
+To: Little Rock, AR 292.5 miles
+To: Atlanta, GA 455.1 miles
+To: Savannah, GA 224.5 miles
+To: Columbia, SC 138.9 miles
+To: Philadelphia, PA 522.4 miles
+To: Charleston, WV 365.7 miles
+To: Columbus, OH 135.1 miles
+To: Nashville, TN 336.4 miles
+To: Des Moines, IA 522.8 miles

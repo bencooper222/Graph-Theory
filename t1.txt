@@ -1,0 +1,19 @@
+______________________________
+Program shortest path solution
+From: Gaylord, MI 
+To: Concord, MA 685.1 miles
+To: Raleigh, NC 597.9 miles
+To: Tallahassee, FL 490.7 miles
+To: Sacramento, CA 2175.3 miles
+To: Gaylord, MI 1926.9 miles
+Total miles this path: 5875.8
+
+______________________________
+Users shortest path solution
+From: Tallahassee, FL 
+To: Sacramento, CA 2175.3 miles
+To: Gaylord, MI 1926.9 miles
+To: Concord, MA 685.1 miles
+To: Raleigh, NC 597.9 miles
+To: Tallahassee, FL 490.7 miles
+T
