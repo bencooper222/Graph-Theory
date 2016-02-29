@@ -63,7 +63,7 @@ namespace Graph_Theory
                 return neighbors;
             }
         }
-        
+
         public bool IsConnected(Vertex ver)
         {
             if (neighbors.Contains(ver))
@@ -76,7 +76,7 @@ namespace Graph_Theory
             }
         }
 
-        public static bool operator==(Vertex ver1, Vertex ver2)
+        public static bool operator ==(Vertex ver1, Vertex ver2)
         {
             if (ver1.Nickname == ver2.Nickname)
             {
