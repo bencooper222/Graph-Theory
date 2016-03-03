@@ -10,7 +10,17 @@ namespace Graph_Theory
     class Graph
     {
         private string name;
-        public string Name { get; }
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
         private List<Vertex> vertices = new List<Vertex>();
         public List<Vertex> Vertices
         {
@@ -66,23 +76,15 @@ namespace Graph_Theory
 
         }
 
-        /// <summary>
-        /// Connects all given vertices with edges of the same weight. Currently not confident in correctness of method. 
-        /// </summary>
-        /// <param name="cost">Weight desired</param>
-        /// <param name="verts">Vertices to connect</param>
-        public void AddSameWeightEdges(double cost, params Vertex[] verts)
-        {
-            for (int i = 0; i < verts.Length; i++)
-            {
-                for (int j = 0; j < verts.Length; j++)
-                {
-                    if (verts[i] != verts[j] & verts[i].IsConnected(verts[j]))
-                    {
-                        AddEdge(verts[i], verts[j], cost);
-                    }
-                }
 
+        public void RemoveVertex(Vertex vert)
+        {
+            foreach (Vertex v in vertices)
+            {
+                if (v == vert)
+                {
+                    vertices.Remove(v);
+                }
             }
         }
 
@@ -113,17 +115,33 @@ namespace Graph_Theory
 
         public bool IsConnected()
         {
-            bool connected = false;
-            foreach(Vertex v in vertices)
+            bool connected = true;
+            foreach (Vertex v in vertices)
             {
-                if (v.Neighbors.Count > 0)
+                if (v.Neighbors.Count == 0)
                 {
-                    connected = true;
+                    connected = false;
                 }
-                
+
             }
             return connected;
         }
 
+        public Graph Duplicate()
+        {
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string results = "";
+
+            foreach (Vertex v in vertices)
+            {
+                results += (v + " ");
+            }
+
+            return results;
+        }
     }
 }

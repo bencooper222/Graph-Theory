@@ -13,6 +13,11 @@ namespace Graph_Theory
         private List<Vertex> neighbors;
         private string number; // used to designate order added to graph
 
+
+        public Vertex(string name)
+        {
+            nickname = name;
+        }
         public string Number
         {
             get
@@ -64,7 +69,7 @@ namespace Graph_Theory
             }
         }
 
-        public bool IsConnected(Vertex ver)
+        public bool IsNeighbor(Vertex ver)
         {
             if (neighbors.Contains(ver))
             {
@@ -102,7 +107,7 @@ namespace Graph_Theory
 
         public override string ToString()
         {
-            return (nickname + " has a degree of " + neighbors.Count);
+            return nickname;
         }
     }
 }
