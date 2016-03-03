@@ -20,6 +20,7 @@ namespace Graph_Theory
                 {
                     if (PathExists(permutation))
                     {
+                        
                         totalWeights.Add(SumWeights(permutation));
                     }
                 }
@@ -87,7 +88,9 @@ namespace Graph_Theory
             return sum;
         }
 
-        // Generate permutations.
+
+
+      
         private List<List<Vertex>> GeneratePermutations<Vertex>(List<Vertex> vertices)
         {
             // Make an array to hold the

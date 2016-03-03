@@ -67,15 +67,31 @@ namespace Graph_Theory
         {
             if (Contains(one) & Contains(two))
             {
-                one.Neighbors.Add(two);
-                one.Costs.Add(cost);
+                if (!one.Neighbors.Contains(two))
+                {
+                    one.Neighbors.Add(two);
+                    one.Costs.Add(cost);
 
-                two.Neighbors.Add(one);
-                two.Costs.Add(cost);
+                    two.Neighbors.Add(one);
+                    two.Costs.Add(cost);
+                }
+              
             }
 
         }
 
+        public void AddSameWeightedEdges(double cost, params Vertex[] vertices)
+        {
+            for (int i=0; i < vertices.Length; i++)
+            {
+                for (int j=i; j<vertices.Length; j++)
+                {
+                    AddEdge(vertices[i], vertices[j], cost);
+
+                }
+                
+            }
+        }
 
         public void RemoveVertex(Vertex vert)
         {
@@ -142,6 +158,21 @@ namespace Graph_Theory
             }
 
             return results;
+        }
+
+        public static Graph CompleteGraph(int vertexTotal, double cost)
+        {
+            Graph result = new Graph("Complete_" + vertexTotal);
+            Vertex[] vertexArray = new Vertex[vertexTotal];
+            for(int i=0; i < vertexTotal; i++)
+            {
+                Vertex toAdd = new Vertex(i.ToString());
+                result.AddNode(toAdd);
+                vertexArray[i] = toAdd;
+            }
+            result.AddSameWeightedEdges(cost, vertexArray);
+
+            return result;
         }
     }
 }
