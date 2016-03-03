@@ -11,5 +11,11 @@ namespace Graph_Theory
         static void Main(string[] args)
         {
         }
+
+
+        private static void BruteForceTSP(Graph g)
+        {
+
+        }
     }
 }

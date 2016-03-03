@@ -67,7 +67,7 @@ namespace Graph_Theory
         }
 
         /// <summary>
-        /// Connects all given vertices with edges of the same weight
+        /// Connects all given vertices with edges of the same weight. Currently not confident in correctness of method. 
         /// </summary>
         /// <param name="cost">Weight desired</param>
         /// <param name="verts">Vertices to connect</param>
@@ -102,6 +102,27 @@ namespace Graph_Theory
         public int Count()
         {
             return vertices.Count;
+        }
+
+        public Vertex GetRandomVertex()
+        {
+            Random rand = new Random();
+            return vertices[(int)rand.NextDouble() * Count()];
+
+        }
+
+        public bool IsConnected()
+        {
+            bool connected = false;
+            foreach(Vertex v in vertices)
+            {
+                if (v.Neighbors.Count > 0)
+                {
+                    connected = true;
+                }
+                
+            }
+            return connected;
         }
 
     }

@@ -100,5 +100,9 @@ namespace Graph_Theory
             }
         }
 
+        public override string ToString()
+        {
+            return (nickname + " has a degree of " + neighbors.Count);
+        }
     }
 }
