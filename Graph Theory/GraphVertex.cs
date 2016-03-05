@@ -6,29 +6,46 @@ using System.Threading.Tasks;
 
 namespace Graph_Theory
 {
-    class Vertex
+    class GraphVertex
     {
         private string nickname;
         private List<double> costs;
-        private List<Vertex> neighbors;
-        private string number; // used to designate order added to graph
+        private List<GraphVertex> neighbors;
+        private double[] coordinates = new double[2];
+       
 
-
-        public Vertex(string name)
-        {
-            nickname = name;
-        }
-        public string Number
+        public bool IsBounded
         {
             get
             {
-                return number;
+                if (coordinates == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+         
+        }
+
+        public double[] Coordinates
+        {
+            get
+            {
+                return coordinates;
             }
             set
             {
-                number = value;
+                coordinates = value;
             }
         }
+        public GraphVertex(string name)
+        {
+            nickname = name;
+        }
+        
 
 
         public string Nickname
@@ -56,20 +73,20 @@ namespace Graph_Theory
             }
         }
 
-        public List<Vertex> Neighbors
+        public List<GraphVertex> Neighbors
         {
             get
             {
                 if (neighbors == null)
                 {
-                    neighbors = new List<Vertex>();
+                    neighbors = new List<GraphVertex>();
                 }
 
                 return neighbors;
             }
         }
 
-        public bool IsNeighbor(Vertex ver)
+        public bool IsNeighbor(GraphVertex ver)
         {
             if (neighbors.Contains(ver))
             {
@@ -81,7 +98,7 @@ namespace Graph_Theory
             }
         }
 
-        public static bool operator ==(Vertex ver1, Vertex ver2)
+        public static bool operator ==(GraphVertex ver1, GraphVertex ver2)
         {
             if (ver1.Nickname == ver2.Nickname)
             {
@@ -93,7 +110,7 @@ namespace Graph_Theory
             }
         }
 
-        public static bool operator !=(Vertex ver1, Vertex ver2)
+        public static bool operator !=(GraphVertex ver1, GraphVertex ver2)
         {
             if (ver1.Nickname == ver2.Nickname)
             {
@@ -107,6 +124,7 @@ namespace Graph_Theory
 
         public override string ToString()
         {
+        
             return nickname;
         }
     }
