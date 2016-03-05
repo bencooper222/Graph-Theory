@@ -58,10 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TSP\Arun_Algorithim.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TSP.cs" />
+    <Compile Include="TSP\Brute Force.cs" />
     <Compile Include="GraphVertex.cs" />
   </ItemGroup>
   <ItemGroup>

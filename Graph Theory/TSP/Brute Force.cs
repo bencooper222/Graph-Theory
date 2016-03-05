@@ -6,44 +6,44 @@ using System.Threading.Tasks;
 
 namespace Graph_Theory
 {
-    class TSP_Algorithims
+    class TSP_Brute
     {
-        public string BruteForceTSP(Graph g) // must be run in a for loop that is equal to g.Count();
+        public string BruteForceTSP(Graph SalesmanLocations)
         {
             string result = "NO RESULT";
-            if (g.IsConnected())
+            if (SalesmanLocations.IsConnected())
             {
-                List<Vertex> vertices = g.Vertices;
-                List<List<Vertex>> permutations = GeneratePermutations(vertices);
+                List<GraphVertex> vertices = SalesmanLocations.Vertices;
+                List<List<GraphVertex>> permutations = GeneratePermutations(vertices);
                 List<double> totalWeights = new List<double>();
-                foreach(List<Vertex> permutation in permutations)
+                foreach (List<GraphVertex> permutation in permutations)
                 {
                     if (PathExists(permutation))
                     {
-                        
+
                         totalWeights.Add(SumWeights(permutation));
                     }
                 }
 
                 double bestRun = totalWeights.Min();
-                List<Vertex> bestPermutation = permutations[totalWeights.IndexOf(bestRun)];
+                List<GraphVertex> bestPermutation = permutations[totalWeights.IndexOf(bestRun)];
 
                 result = " ";
-                foreach(Vertex v in bestPermutation)
+                foreach (GraphVertex v in bestPermutation)
                 {
                     result += v;
-                    
+
                 }
                 result += bestPermutation[0]; // the computer is computing a cycle, this just makes the string reflect that
-                result = result + " took a total of: " + bestRun;
+                result = result + " took a total of: " + bestRun + " weight units";
             }
 
-           
+
 
             return result;
         }
 
-        private bool PathExists(List<Vertex> vertices)
+        private bool PathExists(List<GraphVertex> vertices)
         {
             bool sameConnections = true;
             for (int i = 0; i < vertices.Count; i++)
@@ -57,7 +57,7 @@ namespace Graph_Theory
                 }
                 else
                 {
-                    if (!vertices[0].IsNeighbor(vertices[vertices.Count-1]))
+                    if (!vertices[0].IsNeighbor(vertices[vertices.Count - 1]))
                     {
                         sameConnections = false;
                     }
@@ -66,15 +66,15 @@ namespace Graph_Theory
             return sameConnections;
         }
 
-        private double SumWeights(List<Vertex> vertices) // requires a graph that has a path thorugh it
+        private double SumWeights(List<GraphVertex> vertices) // requires a graph that has a path thorugh it
         {
             double sum = 0;
             for (int i = 0; i < vertices.Count; i++)
             {
-                List<Vertex> neighbors = vertices[i].Neighbors;
+                List<GraphVertex> neighbors = vertices[i].Neighbors;
                 if (i != vertices.Count - 1)
                 {
-                   
+
                     int index = neighbors.IndexOf(vertices[i + 1]);
                     sum += vertices[i].Costs[index];
                 }
@@ -90,8 +90,8 @@ namespace Graph_Theory
 
 
 
-      
-        private List<List<Vertex>> GeneratePermutations<Vertex>(List<Vertex> vertices)
+
+        private List<List<Vertex>> GeneratePermutations<Vertex>(List<Vertex> vertices) // creds to http://csharphelper.com/blog/2014/08/generate-all-of-the-permutations-of-a-set-of-objects-in-c/
         {
             // Make an array to hold the
             // permutation we are building.
@@ -105,8 +105,7 @@ namespace Graph_Theory
             List<List<Vertex>> results = new List<List<Vertex>>();
 
             // Build the combinations recursively.
-            PermuteItems<Vertex>(vertices, in_selection,
-                current_permutation, results, 0);
+            PermuteItems<Vertex>(vertices, in_selection, current_permutation, results, 0);
 
             // Return the results.
             return results;
@@ -117,9 +116,7 @@ namespace Graph_Theory
 
         // Recursively permute the items that are
         // not yet in the current selection.
-        private void PermuteItems<T>(List<T> items, bool[] in_selection,
-            T[] current_permutation, List<List<T>> results,
-            int next_position)
+        private void PermuteItems<T>(List<T> items, bool[] in_selection, T[] current_permutation, List<List<T>> results, int next_position) // also stolen from http://csharphelper.com/blog/2014/08/generate-all-of-the-permutations-of-a-set-of-objects-in-c/
         {
             // See if all of the positions are filled.
             if (next_position == items.Count)
@@ -150,6 +147,9 @@ namespace Graph_Theory
                 }
             }
         }
+
+
+        
 
     }
 }
