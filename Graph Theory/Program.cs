@@ -11,44 +11,98 @@ namespace Graph_Theory
     {
         static void Main(string[] args)
         {
-            /*
+
+
             TSP_Brute tsp = new TSP_Brute();
-            //List<Vertex> set = new List<Vertex>();
-            Graph todo = Graph.CompleteGraph(11, 1);
-         
-
-
-
-            var watch = Stopwatch.StartNew();
-            Console.WriteLine(tsp.BruteForceTSP(todo));
-            watch.Stop();
-            Console.WriteLine("This computation took: " + watch.ElapsedMilliseconds + " milliseconds");
-            Console.Read();*/
-
             Arun_Algorithim arjun = new Arun_Algorithim();
-            Graph todo = new Graph("hi");
-            List<GraphVertex> set = new List<GraphVertex>();
 
-            
-            set.Add(new GraphVertex("Miami", 25.785, -80.271));
-            set.Add(new GraphVertex("Seattle", 47.597, -122.335));
-            set.Add(new GraphVertex("San Diego", 32.779, -117.14));
-            set.Add(new GraphVertex("Tampa", 27.988, -82.485));
 
-            todo.AddVertices(set.ToArray());
+            List<GraphVertex> FullSet = new List<GraphVertex>();
 
-            for(int i=0; i < set.Count; i++)
+
+            FullSet.Add(new GraphVertex("Miami", 25.785, -80.271));
+            FullSet.Add(new GraphVertex("Seattle", 47.597, -122.335));
+            FullSet.Add(new GraphVertex("San Diego", 32.779, -117.14));
+            FullSet.Add(new GraphVertex("Augusta", 44.322, -69.777));
+            FullSet.Add(new GraphVertex("San Francisco", 37.767, -122.424));
+            //FullSet.Add(new GraphVertex("Sacramento", 38.579, -121.468));
+            //FullSet.Add(new GraphVertex("Los Angeles", 34.044, -118.302));
+            //FullSet.Add(new GraphVertex("Portland", 45.514, -122.66));
+            //FullSet.Add(new GraphVertex("Bend", 44.034, -121.334));
+            // FullSet.Add(new GraphVertex("Spokane", 47.673, -117.386));
+
+
+
+
+            Graph todo = new Graph("todo");
+            todo.AddVertices(FullSet.ToArray());
+
+            for (int h = 0; h < FullSet.Count; h++)
             {
-                for (int j = i+1; j < set.Count; j++)
+                for (int j = h + 1; j < FullSet.Count; j++)
                 {
-                    todo.AddEdge(set[i], set[j], 0, true);
-                    Console.WriteLine(set[i] + " " + set[j]);
+                    todo.AddEdge(FullSet[h], FullSet[j], 0, true);
                 }
-                    
+
+            }
+            int i = 0;
+            while (i != 3)
+            {
+                Stopwatch brute = new Stopwatch();
+                brute.Start();
+                tsp.BruteForceTSP(todo);
+                brute.Stop();
+                Console.WriteLine("With " + todo.Vertices.Count + " cities, it took " + brute.ElapsedMilliseconds + " when using the brute algorithim");
+
+                Stopwatch arun = new Stopwatch();
+                arun.Start();
+                arjun.ArunAlgorithim(todo);
+                arun.Stop();
+                Console.WriteLine("With " + todo.Vertices.Count + " cities, it took" + arun.ElapsedMilliseconds + " when using the arun algorithim");
+                i++;
             }
 
 
-            Console.WriteLine(arjun.ArunAlgorithim(todo));
+            /*
+                        for (int i = 2; i < FullSet.Count - 1; i++)
+                        {
+                            List<GraphVertex> SmallSet = new List<GraphVertex>();
+                            Graph todo = new Graph("todo");
+
+                            for (int j = 0; j < i; j++)
+                            {
+                                SmallSet.Add(FullSet[j]);
+                            }
+                            todo.AddVertices(SmallSet.ToArray());
+
+
+                            for (int h = 0; h < SmallSet.Count; h++)
+                            {
+                                for (int j = h + 1; j < SmallSet.Count; j++)
+                                {
+                                    todo.AddEdge(FullSet[h], FullSet[j], 0, true);
+                                }
+
+                            }
+
+                            Stopwatch brute = new Stopwatch();
+                            brute.Start();
+                            tsp.BruteForceTSP(todo);
+                            brute.Stop();
+                            Console.WriteLine("With " + i + " cities, it took " + brute.ElapsedMilliseconds + " when using the brute algorithim");
+
+                            Stopwatch arun = new Stopwatch();
+                            arun.Start();
+                            arjun.ArunAlgorithim(todo);
+                            arun.Stop();
+                            Console.WriteLine("With " + i + " cities, it took" + arun.ElapsedMilliseconds + " when using the arun algorithim");
+
+                        }
+
+                */
+
+
+
             Console.Read();
         }
 
