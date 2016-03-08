@@ -9,43 +9,32 @@ namespace Graph_Theory
     class GraphVertex
     {
         private string nickname;
-        private List<double> costs;
+        private List<double> weights;
         private List<GraphVertex> neighbors;
-        private double[] coordinates = new double[2];
-       
+        private double xPos;
+        private double yPos;
 
-        public bool IsBounded
-        {
-            get
-            {
-                if (coordinates == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-         
-        }
+
+
 
         public double[] Coordinates
         {
             get
             {
+                double[] coordinates = new double[2];
+                coordinates[0] = xPos;
+                coordinates[1] = yPos;
                 return coordinates;
             }
-            set
-            {
-                coordinates = value;
-            }
+
         }
-        public GraphVertex(string name)
+        public GraphVertex(string name, double xPos, double yPos)
         {
             nickname = name;
+            this.xPos = xPos;
+            this.yPos = yPos;
         }
-        
+
 
 
         public string Nickname
@@ -60,16 +49,16 @@ namespace Graph_Theory
             }
         }
 
-        public List<double> Costs
+        public List<double> Weights
         {
             get
             {
-                if (costs == null)
+                if (weights == null)
                 {
-                    costs = new List<double>();
+                    weights = new List<double>();
                 }
 
-                return costs;
+                return weights;
             }
         }
 
@@ -124,8 +113,7 @@ namespace Graph_Theory
 
         public override string ToString()
         {
-        
-            return nickname;
+            return nickname + "(" + xPos + "," + yPos + ")";
         }
     }
 }
