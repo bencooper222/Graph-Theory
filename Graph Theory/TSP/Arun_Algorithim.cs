@@ -11,6 +11,9 @@ namespace Graph_Theory
 
         public string ArunAlgorithim(Graph SalesmanLocations)
         {
+            Graph configuration = new Graph("result");
+            string results = "";
+
             List<GraphVertex> vertices = SalesmanLocations.Vertices;
             List<double> yPositions = new List<double>();
             foreach (GraphVertex v in vertices)
@@ -24,13 +27,38 @@ namespace Graph_Theory
             List<GraphVertex> belowAverage = SortHigher(vertices, averageYPos, false);
 
             // sorts to save computing power later
-            belowAverage.Sort();
-            aboveAverage.Sort();
 
-           
+            belowAverage = belowAverage.OrderBy(v => v.Coordinates[0]).ToList();
+            aboveAverage = aboveAverage.OrderBy(v => v.Coordinates[0]).ToList();
 
-            string result = "";
-            return result;
+            configuration.AddVertices(belowAverage.ToArray());
+            configuration.AddVertices(aboveAverage.ToArray());
+
+            // connects each set of edges
+            for (int i = 0; i < belowAverage.Count - 1; i++)
+            {
+                double edgeWeight = SalesmanLocations.GetEdgeWeight(belowAverage[i], belowAverage[i + 1]);
+                configuration.AddEdge(belowAverage[i], belowAverage[i + 1], edgeWeight, false);
+                results += belowAverage[i] + " is connected to " + belowAverage[i + 1] + " with an edge weight of " + edgeWeight + "\n";
+            }
+
+            for (int i = 0; i < aboveAverage.Count - 1; i++)
+            {
+                double edgeWeight = SalesmanLocations.GetEdgeWeight(aboveAverage[i], aboveAverage[i + 1]);
+                configuration.AddEdge(aboveAverage[i], aboveAverage[i + 1], edgeWeight, false);
+                results += aboveAverage[i] + " is connected to " + aboveAverage[i + 1] + " with an edge weight of " + edgeWeight + "\n";
+            }
+
+            double westExtremeWeight = SalesmanLocations.GetEdgeWeight(aboveAverage[0], belowAverage[0]);
+            configuration.AddEdge(belowAverage[0], aboveAverage[0], westExtremeWeight, false);
+            results += belowAverage[0] + " is connected to " + aboveAverage[0] + " with an edge weight of " + westExtremeWeight + "\n";
+
+            double eastExtremeWeight = SalesmanLocations.GetEdgeWeight(aboveAverage[aboveAverage.Count - 1], belowAverage[belowAverage.Count - 1]);
+            configuration.AddEdge(aboveAverage[aboveAverage.Count - 1], belowAverage[belowAverage.Count - 1], eastExtremeWeight, false);
+            results += aboveAverage[aboveAverage.Count - 1] + " is connected to " + belowAverage[belowAverage.Count - 1] + " with an edge weight of " + eastExtremeWeight + "\n";
+
+            return results;
+
         }
 
 
@@ -57,22 +85,41 @@ namespace Graph_Theory
             List<GraphVertex> results = new List<GraphVertex>();
             foreach (GraphVertex v in vertices)
             {
+
                 if (higher)
                 {
                     if (v.Coordinates[1] > limit)
                     {
+
                         results.Add(v);
                     }
+
+                }
+                else
+                {
                     if (v.Coordinates[1] < limit)
                     {
                         results.Add(v);
                     }
                 }
-               
+
             }
             return results;
         }
 
-        
+        private Graph ConnectComponents(List<GraphVertex> vertices)
+        {
+            Graph result = new Graph("connected");
+            result.AddVertices(vertices.ToArray());
+
+            for (int i = 0; i < result.Vertices.Count - 1; i++)
+            {
+                GraphVertex first = result.Vertices[i];
+                GraphVertex second = result.Vertices[i + 1];
+
+                //      result.AddEdge(first,second)
+            }
+            return Graph.CompleteGraphConstructor(2, 3);
+        }
     }
 }
