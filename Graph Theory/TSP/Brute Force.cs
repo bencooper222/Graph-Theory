@@ -76,12 +76,12 @@ namespace Graph_Theory
                 {
 
                     int index = neighbors.IndexOf(vertices[i + 1]);
-                    sum += vertices[i].Costs[index];
+                    sum += vertices[i].Weights[index];
                 }
                 else
                 {
                     int index = neighbors.IndexOf(vertices[0]);
-                    sum += vertices[i].Costs[index];
+                    sum += vertices[i].Weights[index];
                 }
 
             }
